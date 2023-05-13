@@ -12,7 +12,7 @@
         SignUp
       </h4>
     </div>
-    <form action="{% url 'accountapp:update' pk=user.pk %}" method = "post">
+    <form action="{% url 'accountapp:update' pk=target_user.pk %}" method = "post">
       {% csrf_token %}
 <!--      {{ form }}-->
       {% bootstrap_form form %}
