@@ -10,6 +10,8 @@ from commentapp.models import Comment
 
 
 # Create your views here.
+
+
 class CommentCreateView(CreateView):
     model = Comment
     form_class = CommentCreationForm
@@ -23,13 +25,14 @@ class CommentCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('articleapp:detail', kwargs={'pk':self.object.article.pk})
+        return reverse('articleapp:detail',kwargs={'pk':self.object.article.pk})
 
-@method_decorator(comment_ownership_required, 'get')
-@method_decorator(comment_ownership_required, 'post')
+@method_decorator(comment_ownership_required,'get')
+@method_decorator(comment_ownership_required,'post')
 class CommentDeleteView(DeleteView):
-    model = Comment
+    model=Comment
     context_object_name = 'target_comment'
     template_name = 'commentapp/delete.html'
     def get_success_url(self):
-        return reverse('articleapp:detail', kwargs={'pk': self.object.article.pk})
+        return reverse('articleapp:detail',kwargs={'pk':self.object.article.pk})
+    # 댓글을 삭제하고 나서 어디로 가느냐에 대한 reverse 구문
