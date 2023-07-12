@@ -9,5 +9,5 @@ def article_ownership_required(func):
         article = Article.objects.get(pk=kwargs['pk'])
         if not article.writer == request.user:
             return HttpResponseForbidden()
-        return func(request ,*args, **kwargs)
+        return func(request, *args, **kwargs)
     return decorated

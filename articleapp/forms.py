@@ -7,6 +7,3 @@ class ArticleCreationForm(ModelForm):
     class Meta:
         model = Article
         fields = ['title', 'image', 'content']
-
-
-
